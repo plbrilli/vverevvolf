@@ -5,8 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vverevvolf — Werewolf, as told by a vampire</title>
 <meta name="description" content="A party game hosted by a vampire. The Count narrates the night, announces the dead, and remembers every lie you told.">
-<meta property="og:title" content="Vverevvolf">
+<link rel="canonical" href="https://vverevvolf.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vverevvolf">
+<meta property="og:url" content="https://vverevvolf.com/">
+<meta property="og:title" content="Vverevvolf — Werewolf, as told by a vampire">
 <meta property="og:description" content="One of you is a wolf. I know which. I might tell you.">
+<meta property="og:image" content="https://vverevvolf.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vverevvolf wordmark beside a full moon bitten by two fangs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vverevvolf — Werewolf, as told by a vampire">
+<meta name="twitter:description" content="One of you is a wolf. I know which. I might tell you.">
+<meta name="twitter:image" content="https://vverevvolf.com/og.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#0E0B0C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 420'%3E%3Ccircle cx='200' cy='225' r='175' fill='%23EDE6DA'/%3E%3Crect x='96' y='22' width='208' height='14' rx='7' fill='%230E0B0C'/%3E%3Cpath d='M124 30 L190 30 Q182 150 158 262 Q136 150 124 30 Z' fill='%230E0B0C'/%3E%3Cpath d='M210 30 L276 30 Q264 150 242 262 Q218 150 210 30 Z' fill='%230E0B0C'/%3E%3Cpath d='M242 276 Q254 296 242 308 Q230 296 242 276 Z' fill='%23A80E26'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +42,9 @@ h1,h2,h3,p,blockquote{margin:0}
 .wordmark .x{color:var(--blood);margin-left:-.34em}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .serif{font-family:var(--serif)}
+/* Bodoni's display cut has hairlines that vanish on phones; use a sturdier optical size there */
+h1,h2,blockquote,.step .n,.facts .v{font-optical-sizing:none;font-variation-settings:"opsz" 14}
+@media (min-width:900px){h1,h2,blockquote,.step .n,.facts .v{font-variation-settings:"opsz" 36}}
 
 /* header */
 header{border-bottom:1px solid var(--line)}
