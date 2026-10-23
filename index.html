@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vverevvolf — Werewolf, as told by a vampire</title>
+<meta name="description" content="A party game hosted by a vampire. The Count narrates the night, announces the dead, and remembers every lie you told.">
+<meta property="og:title" content="Vverevvolf">
+<meta property="og:description" content="One of you is a wolf. I know which. I might tell you.">
+<meta name="theme-color" content="#0E0B0C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 420'%3E%3Ccircle cx='200' cy='225' r='175' fill='%23EDE6DA'/%3E%3Crect x='96' y='22' width='208' height='14' rx='7' fill='%230E0B0C'/%3E%3Cpath d='M124 30 L190 30 Q182 150 158 262 Q136 150 124 30 Z' fill='%230E0B0C'/%3E%3Cpath d='M210 30 L276 30 Q264 150 242 262 Q218 150 210 30 Z' fill='%230E0B0C'/%3E%3Cpath d='M242 276 Q254 296 242 308 Q230 296 242 276 Z' fill='%23A80E26'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#0E0B0C; --ink-2:#120E0E; --line:#2A2321;
+  --bone:#EDE6DA; --bone-2:#D9CFC0; --text-2:#C9BFB2; --muted:#A79E92;
+  --blood:#A80E26;
+  --serif:'Bodoni Moda', Georgia, serif;
+  --sans:Inter, system-ui, -apple-system, sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--sans);font-size:16px;line-height:1.6}
+h1,h2,h3,p,blockquote{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.wordmark{font-family:var(--serif);font-weight:800;letter-spacing:.1em;white-space:nowrap;color:var(--bone);text-decoration:none}
+.wordmark .x{color:var(--blood);margin-left:-.34em}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.serif{font-family:var(--serif)}
+
+/* header */
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:18px;padding-bottom:18px}
+header .wordmark{font-size:20px}
+header .eyebrow{display:none}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:24px;padding:32px 20px 64px}
+.moon{width:260px;max-width:70%;height:auto;align-self:center;display:block}
+.hero-copy{display:flex;flex-direction:column;gap:24px}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:42px;line-height:1.04}
+.hero h1 em{font-weight:400;color:var(--bone-2)}
+.lede{color:var(--text-2);font-size:17px;max-width:560px}
+
+/* night */
+.band{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.night{padding:56px 20px;display:flex;flex-direction:column;gap:36px}
+.night h2{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.1}
+.steps{display:grid;gap:32px}
+.step{display:flex;gap:16px}
+.step .n{font-family:var(--serif);font-size:32px;line-height:1;color:var(--blood);width:40px;flex-shrink:0}
+.step h3{font-size:18px;font-weight:600;margin-bottom:6px}
+.step p{color:var(--text-2)}
+
+/* host */
+.host{padding:64px 20px;display:flex;flex-direction:column;gap:40px}
+.host-copy{display:flex;flex-direction:column;gap:24px}
+.host blockquote{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.3}
+.host-copy p.body{color:var(--text-2);max-width:560px}
+.traits{border-top:1px solid var(--line)}
+.traits div{padding:18px 0;border-bottom:1px solid var(--line)}
+.traits strong{display:block;font-weight:600}
+.traits span{color:var(--muted);font-size:15px}
+
+/* facts */
+.facts{padding:48px 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px}
+.facts .v{font-family:var(--serif);font-size:22px;line-height:1.25}
+
+/* close */
+.close{padding:72px 20px 64px;display:flex;flex-direction:column;gap:16px;text-align:center;max-width:760px;margin:0 auto}
+.close h2{font-family:var(--serif);font-weight:700;font-size:36px;line-height:1.08}
+.close p{color:var(--text-2)}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-top:28px;padding-bottom:28px;display:flex;flex-direction:column;gap:8px;align-items:center;font-size:13px;color:#8A8178}
+footer .wordmark{font-size:18px}
+
+/* desktop */
+@media (min-width:900px){
+  body{font-size:17px}
+  header .wrap{padding-top:28px;padding-bottom:28px}
+  header .wordmark{font-size:24px}
+  header .eyebrow{display:block}
+  .hero{max-width:1180px;margin:0 auto;flex-direction:row-reverse;align-items:center;gap:56px;padding:72px 24px 104px}
+  .moon{width:420px;max-width:none;flex-shrink:0}
+  .hero-copy{flex:1;gap:28px}
+  .hero h1{font-size:clamp(56px,6.2vw,88px);line-height:1.02}
+  .lede{font-size:19px}
+  .night{max-width:1180px;margin:0 auto;padding:88px 24px;gap:48px}
+  .night h2{font-size:48px}
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+  .step{flex-direction:column;gap:12px}
+  .step .n{font-size:44px}
+  .step h3{font-size:20px}
+  .host{max-width:1180px;margin:0 auto;flex-direction:row;gap:64px;padding:104px 24px}
+  .host-copy{flex:1.6}
+  .host blockquote{font-size:36px}
+  .traits{flex:1}
+  .facts{max-width:1180px;margin:0 auto;grid-template-columns:repeat(4,minmax(0,1fr));padding:72px 24px}
+  .facts .v{font-size:28px}
+  .close{padding:112px 24px 96px}
+  .close h2{font-size:60px}
+  footer .wrap{flex-direction:row;justify-content:space-between;padding-left:24px;padding-right:24px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="Vverevvolf">V<span class="x">V</span>ERE<span>V</span><span class="x">V</span>OLF</a>
+    <p class="eyebrow">In development</p>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <svg class="moon" viewBox="0 0 400 420" aria-hidden="true">
+      <circle cx="200" cy="225" r="175" fill="#EDE6DA"/>
+      <circle cx="268" cy="300" r="22" fill="#DCD2C3"/>
+      <circle cx="140" cy="330" r="14" fill="#DCD2C3"/>
+      <circle cx="250" cy="190" r="10" fill="#DCD2C3"/>
+      <rect x="96" y="22" width="208" height="14" rx="7" fill="#0E0B0C"/>
+      <path d="M124 30 L190 30 Q182 150 158 262 Q136 150 124 30 Z" fill="#0E0B0C"/>
+      <path d="M210 30 L276 30 Q264 150 242 262 Q218 150 210 30 Z" fill="#0E0B0C"/>
+      <path d="M242 276 Q254 296 242 308 Q230 296 242 276 Z" fill="#A80E26"/>
+    </svg>
+    <div class="hero-copy">
+      <p class="eyebrow">A party game, hosted by a vampire</p>
+      <h1>One of you is a wolf. I know which. <em>I might tell you.</em></h1>
+      <p class="lede">Vverevvolf is the old village-and-werewolves game with one change: nobody has to sit out and run it. The Count does. He narrates the night, announces the dead, and remembers every lie you told at the table.</p>
+    </div>
+  </section>
+
+  <div class="band">
+    <section class="night">
+      <h2>How a night goes</h2>
+      <div class="steps">
+        <div class="step"><p class="n">I.</p><div><h3>Phones out, eyes open</h3><p>Everyone gets a secret role on their own phone. Wolves choose a victim, the Seer peeks, the Doctor guards, all with a silent tap. No one sits out.</p></div></div>
+        <div class="step"><p class="n">II.</p><div><h3>The Count speaks</h3><p>Over one speaker, he tells you who didn't survive and how. He uses your names, recalls last round's accusations, and is never once sympathetic.</p></div></div>
+        <div class="step"><p class="n">III.</p><div><h3>The village decides</h3><p>Argue, accuse, vote, execute. The Count keeps the ledger. Then night falls again, until the wolves are dead or the village is.</p></div></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="host">
+    <div class="host-copy">
+      <p class="eyebrow">Your host</p>
+      <blockquote>“I have watched villages and wolves tear each other apart for four hundred years. You will not surprise me. But you may amuse me.”</blockquote>
+      <p class="body">The Count is an AI narrator with a character, not a rules engine with a voice. The game's code holds the secrets; he only performs them. So he can tease, flatter, and mislead without ever breaking the game.</p>
+    </div>
+    <div class="traits">
+      <div><strong>He takes bribes.</strong><span>Offer him something and he may lean your way.</span></div>
+      <div><strong>He lies once a game.</strong><span>Exactly once. Good luck finding it.</span></div>
+      <div><strong>He's hungry.</strong><span>A village that wins too easily is no use to him.</span></div>
+    </div>
+  </section>
+
+  <div class="band" style="border-bottom:0">
+    <section class="facts">
+      <div><p class="eyebrow">You need</p><p class="v">Phones and one speaker</p></div>
+      <div><p class="eyebrow">The host</p><p class="v">The Count, an AI</p></div>
+      <div><p class="eyebrow">The game</p><p class="v">Wolves, village, lies</p></div>
+      <div><p class="eyebrow">Status</p><p class="v">In development</p></div>
+    </section>
+  </div>
+
+  <section class="close">
+    <h2>The first night is coming.</h2>
+    <p>The Count is patient. He has had a great deal of practice.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wordmark">V<span class="x">V</span>ERE<span>V</span><span class="x">V</span>OLF</span>
+    <p>© 2026. Werewolf, as told by a vampire.</p>
+  </div>
+</footer>
+
+</body>
+</html>
